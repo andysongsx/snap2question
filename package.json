@@ -1,0 +1,11 @@
+{
+  "name": "photo-question-generator",
+  "version": "1.0.0",
+  "description": "拍照出题助手 - 小程序 + 腾讯云SCF + Kimi",
+  "scripts": {
+    "deploy": "node deploy.js",
+    "deploy:silent": "sls deploy"
+  },
+  "devDependencies": {},
+  "license": "MIT"
+}

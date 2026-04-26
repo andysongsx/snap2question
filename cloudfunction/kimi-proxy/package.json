@@ -1,0 +1,7 @@
+{
+  "name": "kimi-proxy",
+  "version": "1.0.0",
+  "description": "腾讯云SCF：转发Kimi多模态API请求",
+  "main": "index.js",
+  "dependencies": {}
+}

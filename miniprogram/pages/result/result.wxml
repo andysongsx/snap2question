@@ -1,0 +1,153 @@
+<view class="container">
+  <!-- 原始题目 -->
+  <view class="original-card card" wx:if="{{original_question}}">
+    <view class="card-header">
+      <view class="section-label">📝 原始题目</view>
+    </view>
+    <view class="original-text">{{original_question}}</view>
+    
+    <view class="original-answer" wx:if="{{original_answer}}">
+      <text class="label">答案：</text>{{original_answer}}
+    </view>
+    
+    <!-- 原始题目解析 -->
+    <view class="original-section" wx:if="{{original_analysis}}">
+      <view class="section-header" bindtap="toggleOriginalAnalysis">
+        <view class="section-label">📖 原始题解析</view>
+        <view class="toggle-btn">
+          <text>{{showOriginalAnalysis ? '收起' : '展开'}}</text>
+          <text class="arrow {{showOriginalAnalysis ? 'up' : ''}}">▼</text>
+        </view>
+      </view>
+      <view class="analysis-content {{showOriginalAnalysis ? 'show' : ''}}">
+        <text class="analysis-text">{{original_analysis}}</text>
+      </view>
+    </view>
+    
+    <!-- 错误分析 -->
+    <view class="error-section" wx:if="{{original_error_analysis}}">
+      <view class="section-header" bindtap="toggleErrorAnalysis">
+        <view class="section-label">⚠️ 题目勘误</view>
+        <view class="toggle-btn">
+          <text>{{showErrorAnalysis ? '收起' : '展开'}}</text>
+          <text class="arrow {{showErrorAnalysis ? 'up' : ''}}">▼</text>
+        </view>
+      </view>
+      <view class="analysis-content {{showErrorAnalysis ? 'show' : ''}}">
+        <text class="error-text">{{original_error_analysis}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 题目切换指示器 -->
+  <view class="question-nav" wx:if="{{questions.length > 1}}">
+    <view class="nav-btn {{currentIndex > 0 ? '' : 'disabled'}}" bindtap="prevQuestion">◀ 上一题</view>
+    <view class="nav-indicator">{{currentIndex + 1}} / {{questions.length}}</view>
+    <view class="nav-btn {{currentIndex < questions.length - 1 ? '' : 'disabled'}}" bindtap="nextQuestion">下一题 ▶</view>
+  </view>
+
+  <!-- 多题 swiper -->
+  <swiper class="question-swiper" current="{{currentIndex}}" bindchange="onSwiperChange" wx:if="{{questions.length > 1}}">
+    <swiper-item wx:for="{{questions}}" wx:key="index">
+      <scroll-view scroll-y class="question-scroll">
+        <view class="result-card card">
+          <view class="type-tag {{item.type === 'svg' ? 'tag-svg' : 'tag-text'}}">
+            {{item.type === 'svg' ? '图形题' : '文字题'}}
+          </view>
+          
+          <view class="section">
+            <view class="section-label">📋 新题目</view>
+            
+            <view class="svg-wrap" wx:if="{{item.type === 'svg' && item.svg_code}}">
+              <image class="svg-image" src="data:image/svg+xml;base64,{{svgBase64}}" mode="widthFix" bindtap="previewSvg"/>
+            </view>
+            
+            <view class="question-text">{{item.question}}</view>
+          </view>
+
+          <view class="divider"></view>
+
+          <view class="section">
+            <view class="section-header" bindtap="toggleAnswer">
+              <view class="section-label">🔑 答案</view>
+              <view class="toggle-btn">
+                <text>{{showAnswer ? '收起' : '展开'}}</text>
+                <text class="arrow {{showAnswer ? 'up' : ''}}">▼</text>
+              </view>
+            </view>
+            <view class="answer-content {{showAnswer ? 'show' : ''}}">
+              <text class="answer-text">{{item.answer || '暂无答案'}}</text>
+            </view>
+          </view>
+
+          <view class="divider"></view>
+
+          <view class="section">
+            <view class="section-header" bindtap="toggleAnalysis">
+              <view class="section-label">💡 详细解析</view>
+              <view class="toggle-btn">
+                <text>{{showAnalysis ? '收起' : '展开'}}</text>
+                <text class="arrow {{showAnalysis ? 'up' : ''}}">▼</text>
+              </view>
+            </view>
+            <view class="analysis-content {{showAnalysis ? 'show' : ''}}">
+              <text class="analysis-text">{{item.analysis || '暂无解析'}}</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 单题模式 -->
+  <view class="result-card card" wx:if="{{questions.length === 1}}">
+    <view class="type-tag {{questions[0].type === 'svg' ? 'tag-svg' : 'tag-text'}}">
+      {{questions[0].type === 'svg' ? '图形题' : '文字题'}}
+    </view>
+    
+    <view class="section">
+      <view class="section-label">📋 新题目</view>
+      
+      <view class="svg-wrap" wx:if="{{questions[0].type === 'svg' && questions[0].svg_code}}">
+        <image class="svg-image" src="data:image/svg+xml;base64,{{svgBase64}}" mode="widthFix" bindtap="previewSvg"/>
+      </view>
+      
+      <view class="question-text">{{questions[0].question}}</view>
+    </view>
+
+    <view class="divider"></view>
+
+    <view class="section">
+      <view class="section-header" bindtap="toggleAnswer">
+        <view class="section-label">🔑 答案</view>
+        <view class="toggle-btn">
+          <text>{{showAnswer ? '收起' : '展开'}}</text>
+          <text class="arrow {{showAnswer ? 'up' : ''}}">▼</text>
+        </view>
+      </view>
+      <view class="answer-content {{showAnswer ? 'show' : ''}}">
+        <text class="answer-text">{{questions[0].answer || '暂无答案'}}</text>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+
+    <view class="section">
+      <view class="section-header" bindtap="toggleAnalysis">
+        <view class="section-label">💡 详细解析</view>
+        <view class="toggle-btn">
+          <text>{{showAnalysis ? '收起' : '展开'}}</text>
+          <text class="arrow {{showAnalysis ? 'up' : ''}}">▼</text>
+        </view>
+      </view>
+      <view class="analysis-content {{showAnalysis ? 'show' : ''}}">
+        <text class="analysis-text">{{questions[0].analysis || '暂无解析'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-footer">
+    <button class="btn-copy" bindtap="copyQuestion">复制题目</button>
+    <button class="btn-primary" bindtap="goHome">再拍一题</button>
+  </view>
+</view>

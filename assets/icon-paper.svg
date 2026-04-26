@@ -1,0 +1,24 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- 蓝色圆角背景（教育感） -->
+  <rect width="512" height="512" rx="120" fill="#1989fa"/>
+  
+  <!-- 试卷主体 -->
+  <rect x="136" y="116" width="240" height="320" rx="20" fill="white"/>
+  <!-- 试卷右上角折角 -->
+  <path d="M376 116 L376 196 L296 116 Z" fill="#e6f2ff"/>
+  
+  <!-- 试卷上的题目横线 -->
+  <rect x="168" y="176" width="176" height="12" rx="6" fill="#1989fa" opacity="0.3"/>
+  <rect x="168" y="216" width="144" height="12" rx="6" fill="#1989fa" opacity="0.3"/>
+  <rect x="168" y="256" width="160" height="12" rx="6" fill="#1989fa" opacity="0.3"/>
+  
+  <!-- 数学算式 "1+1=" -->
+  <text x="256" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#1989fa">1+1=?</text>
+  
+  <!-- 右下角铅笔/笔 -->
+  <rect x="332" y="300" width="20" height="96" rx="4" fill="#FFD700" transform="rotate(30 342 348)"/>
+  <polygon points="338,388 346,388 342,404" fill="#ff8c00" transform="rotate(30 342 396)"/>
+  
+  <!-- 左下角对勾（批改正确感） -->
+  <path d="M160 400 L184 424 L232 376" stroke="#07c160" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>

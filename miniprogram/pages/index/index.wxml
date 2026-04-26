@@ -1,0 +1,55 @@
+<view class="container">
+  <view class="header">
+    <text class="title">📸 拍照出题助手</text>
+    <text class="subtitle">拍一道题，生成相似题型</text>
+  </view>
+
+  <!-- 配置面板 -->
+  <view class="config-panel card">
+    <view class="config-row">
+      <text class="config-label">学段</text>
+      <picker mode="selector" range="{{gradeLevels}}" value="{{levelIndex}}" bindchange="onLevelChange">
+        <view class="config-value">{{gradeLevels[levelIndex]}} <text class="arrow">▼</text></view>
+      </picker>
+    </view>
+    <view class="config-row">
+      <text class="config-label">年级</text>
+      <picker mode="selector" range="{{grades}}" value="{{gradeIndex}}" bindchange="onGradeChange">
+        <view class="config-value">{{grades[gradeIndex]}} <text class="arrow">▼</text></view>
+      </picker>
+    </view>
+    <view class="config-row">
+      <text class="config-label">出题数量</text>
+      <picker mode="selector" range="{{counts}}" value="{{countIndex}}" bindchange="onCountChange">
+        <view class="config-value">{{counts[countIndex]}} 道 <text class="arrow">▼</text></view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="action-card card" bindtap="chooseImage">
+    <view class="icon">📷</view>
+    <text class="action-text">拍照或从相册选择</text>
+    <text class="action-desc">支持练习册、试卷、手写题目</text>
+  </view>
+
+  <view class="history-section" wx:if="{{history.length > 0}}">
+    <view class="section-title">最近生成</view>
+    <view class="history-list">
+      <view class="history-item card" wx:for="{{history}}" wx:key="id" bindtap="viewHistory" data-index="{{index}}">
+        <view class="history-header">
+          <text class="history-type">{{item.type === 'svg' ? '图形题' : '文字题'}}</text>
+          <text class="history-time">{{item.createTime}}</text>
+        </view>
+        <view class="history-content">{{item.question}}</view>
+        <view class="history-actions">
+          <text class="delete-btn" catchtap="deleteHistory" data-id="{{item.id}}">删除</text>
+        </view>
+      </view>
+    </view>
+    <view class="clear-all" bindtap="clearAllHistory">清空历史</view>
+  </view>
+
+  <view class="empty-tip" wx:else>
+    <text>暂无记录，点击上方开始拍照出题</text>
+  </view>
+</view>

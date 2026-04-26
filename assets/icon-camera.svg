@@ -1,0 +1,24 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- 绿色圆角背景 -->
+  <rect width="512" height="512" rx="120" fill="#07c160"/>
+  
+  <!-- 相机外框 -->
+  <rect x="116" y="196" width="280" height="200" rx="48" fill="white"/>
+  <!-- 相机顶部取景器 -->
+  <rect x="216" y="156" width="80" height="48" rx="24" fill="white"/>
+  
+  <!-- 镜头外圈（绿色） -->
+  <circle cx="256" cy="296" r="72" fill="#07c160"/>
+  <!-- 镜头内圈（白色） -->
+  <circle cx="256" cy="296" r="56" fill="white"/>
+  
+  <!-- 题目符号 "=" -->
+  <rect x="232" y="280" width="48" height="12" rx="6" fill="#07c160"/>
+  <rect x="232" y="304" width="48" height="12" rx="6" fill="#07c160"/>
+  
+  <!-- 右上角闪光星（AI/生成感） -->
+  <path d="M372 164 L378 182 L396 182 L382 194 L388 212 L372 200 L356 212 L362 194 L348 182 L366 182 Z" fill="#FFD700"/>
+  
+  <!-- 相机左上角小圆点（镜头反光细节） -->
+  <circle cx="160" cy="236" r="12" fill="#07c160" opacity="0.2"/>
+</svg>

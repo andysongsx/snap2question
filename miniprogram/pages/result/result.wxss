@@ -1,0 +1,261 @@
+.container {
+  padding: 30rpx;
+  padding-bottom: 160rpx;
+}
+
+/* 原始题目卡片 */
+.original-card {
+  margin-bottom: 20rpx;
+  background: #fff8f0;
+  border-left: 6rpx solid #ff9500;
+}
+
+.card-header {
+  margin-bottom: 16rpx;
+}
+
+.original-text {
+  font-size: 30rpx;
+  line-height: 1.8;
+  color: #555;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.original-answer {
+  margin-top: 16rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx dashed #f0d9b5;
+  font-size: 28rpx;
+  color: #777;
+}
+
+.original-answer .label {
+  color: #ff9500;
+  font-weight: 500;
+}
+
+.original-section {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0e6d3;
+}
+
+.error-section {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #f0e6d3;
+}
+
+.error-section .section-label {
+  color: #ff4d4f;
+}
+
+.error-text {
+  font-size: 30rpx;
+  line-height: 1.8;
+  color: #ff4d4f;
+  white-space: pre-wrap;
+  word-break: break-all;
+  padding: 16rpx 0;
+}
+
+/* 题目导航 */
+.question-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  padding: 0 10rpx;
+}
+
+.nav-btn {
+  font-size: 28rpx;
+  color: #07c160;
+  padding: 10rpx 16rpx;
+}
+
+.nav-btn.disabled {
+  color: #ccc;
+}
+
+.nav-indicator {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  background: #f2f3f5;
+  padding: 8rpx 32rpx;
+  border-radius: 40rpx;
+}
+
+/* swiper */
+.question-swiper {
+  height: calc(100vh - 500rpx);
+}
+
+.question-scroll {
+  height: 100%;
+  padding-bottom: 20rpx;
+}
+
+/* 新题目卡片 */
+.result-card {
+  position: relative;
+  padding-top: 60rpx;
+}
+
+.type-tag {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  font-size: 22rpx;
+  padding: 6rpx 18rpx;
+  border-radius: 8rpx;
+}
+
+.tag-text {
+  color: #07c160;
+  background: rgba(7, 193, 96, 0.1);
+}
+
+.tag-svg {
+  color: #1989fa;
+  background: rgba(25, 137, 250, 0.1);
+}
+
+.section {
+  margin-bottom: 10rpx;
+}
+
+.section-label {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 0;
+}
+
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666;
+  padding: 10rpx;
+}
+
+.arrow {
+  font-size: 22rpx;
+  margin-left: 8rpx;
+  transition: transform 0.2s;
+}
+
+.arrow.up {
+  transform: rotate(180deg);
+}
+
+.question-text {
+  font-size: 32rpx;
+  line-height: 1.8;
+  color: #222;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.svg-wrap {
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.svg-image {
+  max-width: 100%;
+}
+
+.divider {
+  height: 1rpx;
+  background: #eee;
+  margin: 24rpx 0;
+}
+
+.answer-content,
+.analysis-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.answer-content.show,
+.analysis-content.show {
+  max-height: 2000rpx;
+}
+
+.answer-text,
+.analysis-text {
+  font-size: 30rpx;
+  line-height: 1.8;
+  color: #555;
+  white-space: pre-wrap;
+  word-break: break-all;
+  padding: 16rpx 0;
+}
+
+.answer-text {
+  color: #07c160;
+}
+
+.analysis-text {
+  color: #666;
+}
+
+/* 底部按钮 */
+.action-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx 30rpx 40rpx;
+  background: white;
+  box-shadow: 0 -2rpx 10rpx rgba(0,0,0,0.05);
+}
+
+.action-footer button {
+  height: 88rpx;
+  line-height: 88rpx;
+  font-size: 30rpx;
+  border-radius: 16rpx;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-copy {
+  flex: 1;
+  background: #f2f3f5;
+  color: #333;
+}
+
+.btn-copy::after {
+  border: none;
+}
+
+.action-footer .btn-primary {
+  flex: 1.5;
+  background: #07c160;
+  color: white;
+}
+
+.action-footer .btn-primary::after {
+  border: none;
+}

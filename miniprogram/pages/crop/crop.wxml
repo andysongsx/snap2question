@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="tip-bar">
+    <text class="tip-text">👆 用手指框选题目区域</text>
+    <text class="rotate-hint" wx:if="{{rotation > 0}}">已旋转 {{rotation}}°</text>
+  </view>
+
+  <view class="canvas-wrapper" style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;">
+    <canvas
+      type="2d"
+      id="imageCanvas"
+      class="main-canvas"
+      style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;"
+      catchtouchstart="onTouchStart"
+      catchtouchmove="onTouchMove"
+      catchtouchend="onTouchEnd"
+    ></canvas>
+  </view>
+
+  <!-- 隐藏用于裁剪/旋转的canvas -->
+  <canvas
+    type="2d"
+    id="cropCanvas"
+    style="position: fixed; left: -9999px; top: -9999px; width: 1px; height: 1px;"
+  ></canvas>
+
+  <view class="action-bar">
+    <button class="btn-secondary" bindtap="resetSelection">重选</button>
+    <button class="btn-rotate" bindtap="rotateImage">⟳ 旋转</button>
+    <button class="btn-primary {{hasSelection ? '' : 'disabled'}}" bindtap="confirmCrop">生成类似题</button>
+  </view>
+</view>
